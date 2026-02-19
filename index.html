@@ -180,6 +180,13 @@
                             <input type="text" name="Quran" placeholder="Surah / Juz / Ayat..."
                                 class="w-full bg-white/50 border-b-2 border-rose-300 px-2 py-1 focus:outline-none focus:border-rose-500">
                         </div>
+                        <div class="bg-[#e2ece9] p-4 rounded-xl border-2 border-[#c1d3ce]">
+                            <h3 class="font-bold text-sm mb-2 text-center text-teal-800">
+                                <i class="fas fa-glass-water mr-1"></i> Target Air Minum
+                            </h3>
+                            <div id="waterContainer" class="flex justify-center gap-2 flex-wrap mb-2"></div>
+                            <input type="hidden" name="AirMinum" id="airInput" value="0">
+                        </div>
                     </div>
                 </div>
 
@@ -566,35 +573,40 @@
         // --- 6. LOGIKA AIR MINUM (VISUAL) ---
         const waterContainer = document.getElementById('waterContainer');
         const airInput = document.getElementById('airInput');
-
-        // Render Gelas (Sekali saja saat load)
-        if (waterContainer.children.length === 0) {
-            for (let i = 1; i <= 8; i++) {
-                let drop = document.createElement('div');
-                drop.innerHTML = '<i class="fas fa-tint text-2xl text-gray-300 cursor-pointer transition hover:scale-110"></i>';
-                drop.onclick = () => setWater(i);
-                drop.id = `drop-${i}`;
-                waterContainer.appendChild(drop);
+        
+        // Evaluasi ulang logika: Hanya jalankan jika elemen benar-benar ada di DOM
+        if (waterContainer && airInput) {
+            if (waterContainer.children.length === 0) {
+                for (let i = 1; i <= 8; i++) {
+                    let drop = document.createElement('div');
+                    drop.innerHTML = '<i class="fas fa-tint text-2xl text-gray-300 cursor-pointer transition hover:scale-110"></i>';
+                    drop.onclick = () => setWater(i);
+                    drop.id = `drop-${i}`;
+                    waterContainer.appendChild(drop);
+                }
             }
+        } else {
+            console.warn("Peringatan Sistem: Elemen tracker air minum tidak ditemukan di HTML.");
         }
-
+        
         function setWater(n) {
+            // Pastikan airInput dan waterContainer ada sebelum diubah
+            if (!airInput || !waterContainer) return; 
+        
             airInput.value = n;
             for (let i = 1; i <= 8; i++) {
                 let drop = document.getElementById(`drop-${i}`);
-                let icon = drop.querySelector('i');
-                if (i <= n) {
-                    icon.classList.remove('text-gray-300');
-                    icon.classList.add('text-blue-500');
-                } else {
-                    icon.classList.remove('text-blue-500');
-                    icon.classList.add('text-gray-300');
+                if (drop) {
+                    let icon = drop.querySelector('i');
+                    if (i <= n) {
+                        icon.classList.remove('text-gray-300');
+                        icon.classList.add('text-blue-500');
+                    } else {
+                        icon.classList.remove('text-blue-500');
+                        icon.classList.add('text-gray-300');
+                    }
                 }
             }
-        }
-
-        function resetWaterVisual() {
-            setWater(0);
         }
 
         // --- 7. HANDLE SUBMIT (SIMPAN) ---
@@ -657,3 +669,4 @@
 
 
 </html>
+
