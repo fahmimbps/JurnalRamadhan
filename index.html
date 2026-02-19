@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadhan Journal Aesthetic</title>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icon-192.png">
+    <meta name="theme-color" content="#9d8189">
+
+    <link rel="icon" type="image/png" href="./icon-192.png">
+    <link href="./style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'paper': '#fdf6e3', // Warna dasar kertas krem
+                        'soft-pink': '#fcd5ce',
+                        'soft-green': '#d8e2dc',
+                        'soft-blue': '#d0e1e1',
+                        'soft-yellow': '#fae1dd',
+                        'text-ink': '#4a4e69',
+                    },
+                    fontFamily: {
+                        'hand': ['Patrick Hand', 'cursive'],
+                        'body': ['Quicksand', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdf6e3;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e6dcc8' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .checkbox-custom:checked+div {
+            background-color: #9d8189;
+            color: white;
+            border-color: #9d8189;
+        }
+
+        .mood-radio:checked+label {
+            transform: scale(1.2);
+            filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.2));
+        }
+    </style>
+</head>
+
+<body class="text-text-ink font-body p-4 min-h-screen">
+
+    <div
+        class="max-w-2xl mx-auto bg-[#fffbf0] shadow-2xl rounded-3xl overflow-hidden border-4 border-[#eaddcf] p-6 relative">
+        <div class="absolute top-0 right-0 -mt-2 -mr-2 text-6xl opacity-20 rotate-12">🌙</div>
+
+        <header class="text-center mb-8 font-hand">
+            <h1 class="text-4xl font-bold text-[#9d8189] mb-2">✨ Jurnal Harian Ramadhan ✨</h1>
+            <div class="flex justify-center items-center gap-3 text-lg flex-wrap">
+                <span
+                    class="bg-soft-pink px-4 py-2 rounded-full border border-red-200 shadow-sm font-bold text-[#9d8189]"
+                    id="displayHariKe">
+                    Hari ke-1
+                </span>
+
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-calendar-alt text-gray-400"></i>
+                    </div>
+                    <input type="date" id="datePicker"
+                        class="bg-white border-2 border-soft-blue text-gray-700 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2 shadow-sm cursor-pointer hover:bg-blue-50 transition-colors">
+                </div>
+            </div>
+        </header>
+
+        <form id="ramadhanForm" class="space-y-6">
+
+            <input type="hidden" name="HariKe" id="inputHariKe">
+            <input type="hidden" name="Tanggal" id="inputTanggal">
+            <input type="hidden" name="NamaHari" id="inputNamaHari">
+            <fieldset id="formContent" class="space-y-6 transition-opacity duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <div class="bg-[#e8e8e4] p-5 rounded-2xl border-2 border-[#d8e2dc] shadow-sm">
+                        <h3 class="font-bold text-lg mb-3 flex items-center"><i
+                                class="fas fa-mosque mr-2 text-emerald-600"></i> Shalat Tracker</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 cursor-pointer group">
+                                <input type="checkbox" name="SholatList" value="Subuh"
+                                    class="w-5 h-5 text-emerald-500 rounded focus:ring-emerald-400 border-gray-400">
+                                <span class="group-hover:text-emerald-700">Subuh</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer group">
+                                <input type="checkbox" name="SholatList" value="Dzuhur"
+                                    class="w-5 h-5 text-emerald-500 rounded focus:ring-emerald-400 border-gray-400">
+                                <span>Dzuhur</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer group">
+                                <input type="checkbox" name="SholatList" value="Ashar"
+                                    class="w-5 h-5 text-emerald-500 rounded focus:ring-emerald-400 border-gray-400">
+                                <span>Ashar</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer group">
+                                <input type="checkbox" name="SholatList" value="Maghrib"
+                                    class="w-5 h-5 text-emerald-500 rounded focus:ring-emerald-400 border-gray-400">
+                                <span>Maghrib</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer group">
+                                <input type="checkbox" name="SholatList" value="Isya"
+                                    class="w-5 h-5 text-emerald-500 rounded focus:ring-emerald-400 border-gray-400">
+                                <span>Isya</span>
+                            </label>
+                            <hr class="border-gray-400">
+                            <label class="flex items-center space-x-3 cursor-pointer group">
+                                <input type="checkbox" name="SholatList" value="Duha"
+                                    class="w-5 h-5 text-emerald-500 rounded focus:ring-emerald-400 border-gray-400">
+                                <span>Duha</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer group">
+                                <input type="checkbox" name="SholatList" value="Tarawih"
+                                    class="w-5 h-5 text-emerald-500 rounded focus:ring-emerald-400 border-gray-400">
+                                <span>Tarawih</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer group">
+                                <input type="checkbox" name="SholatList" value="Tahajud"
+                                    class="w-5 h-5 text-emerald-500 rounded focus:ring-emerald-400 border-gray-400">
+                                <span>Tahajud</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-[#fae1dd] p-4 rounded-2xl border-2 border-[#fcd5ce]">
+                            <h3 class="font-bold text-lg mb-2 text-center">Today's Mood</h3>
+                            <div class="flex justify-between px-2">
+                                <div class="text-center">
+                                    <input type="radio" name="Mood" value="Senang" id="mood1" class="hidden peer">
+                                    <label for="mood1"
+                                        class="text-3xl cursor-pointer block transition-all duration-200 grayscale hover:grayscale-0 peer-checked:grayscale-0 peer-checked:scale-125">
+                                        😄
+                                    </label>
+                                </div>
+
+                                <div class="text-center">
+                                    <input type="radio" name="Mood" value="Biasa" id="mood2" class="hidden peer">
+                                    <label for="mood2"
+                                        class="text-3xl cursor-pointer block transition-all duration-200 grayscale hover:grayscale-0 peer-checked:grayscale-0 peer-checked:scale-125">
+                                        🙂
+                                    </label>
+                                </div>
+
+                                <div class="text-center">
+                                    <input type="radio" name="Mood" value="Lelah" id="mood3" class="hidden peer">
+                                    <label for="mood3"
+                                        class="text-3xl cursor-pointer block transition-all duration-200 grayscale hover:grayscale-0 peer-checked:grayscale-0 peer-checked:scale-125">
+                                        😴
+                                    </label>
+                                </div>
+
+                                <div class="text-center">
+                                    <input type="radio" name="Mood" value="Sedih" id="mood4" class="hidden peer">
+                                    <label for="mood4"
+                                        class="text-3xl cursor-pointer block transition-all duration-200 grayscale hover:grayscale-0 peer-checked:grayscale-0 peer-checked:scale-125">
+                                        😢
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-[#f8edeb] p-3 rounded-xl border border-red-200 text-center">
+                                <label class="block text-sm font-bold mb-1">Puasa?</label>
+                                <select name="Puasa" class="w-full bg-white rounded p-1 text-sm border border-gray-300">
+                                    <option value="" selected disabled>-- Pilih --</option>
+                                    <option value="Ya">✅ Ya</option>
+                                    <option value="Tidak">❌ Tidak</option>
+                                    <option value="Setengah">🌗 Setengah</option>
+                                </select>
+                            </div>
+                            <div class="bg-[#e3f2fd] p-3 rounded-xl border border-blue-200 text-center">
+                                <label class="block text-sm font-bold mb-1">Sedekah?</label>
+                                <select name="Sedekah"
+                                    class="w-full bg-white rounded p-1 text-sm border border-gray-300">
+                                    <option value="" selected disabled>-- Pilih --</option>
+                                    <option value="Ya">💰 Ya</option>
+                                    <option value="Tidak">🔒 Belum</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#ffe5d9] p-4 rounded-xl border-2 border-[#ffcad4]">
+                            <h3 class="font-bold text-sm mb-2 flex items-center"><i
+                                    class="fas fa-book-open mr-2 text-rose-500"></i> Baca Al-Qur'an</h3>
+                            <input type="text" name="Quran" placeholder="Surah / Juz / Ayat..."
+                                class="w-full bg-white/50 border-b-2 border-rose-300 px-2 py-1 focus:outline-none focus:border-rose-500">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#e0fbfc] p-5 rounded-2xl border-2 border-[#98c1d9] shadow-sm">
+
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-cyan-900 flex items-center gap-2">
+                            📿 Dzikir List
+                        </h3>
+                        <a href="https://fahmimbps.github.io/dzikir" target="_blank" rel="noopener noreferrer"
+                            class="text-xs font-bold text-cyan-700 bg-white hover:bg-cyan-50 border border-cyan-200 px-3 py-1.5 rounded-full transition-all shadow-sm flex items-center gap-1">
+                            <span>📖</span> Baca
+                        </a>
+                    </div>
+
+                    <div class="space-y-3">
+
+                        <label
+                            class="flex items-center justify-between p-3 bg-white/60 hover:bg-white border border-transparent hover:border-teal-200 rounded-xl cursor-pointer transition-all shadow-sm group">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" name="DzikirList" value="Dzikir Pagi"
+                                    class="peer w-5 h-5 rounded border-gray-300 text-teal-600 focus:ring-teal-500 cursor-pointer">
+
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-sm font-semibold text-slate-700 peer-checked:text-gray-400 peer-checked:line-through transition-colors">
+                                        Dzikir Pagi
+                                    </span>
+                                    <span class="text-[10px] text-slate-400">Antara shubuh hingga terbit matahari</span>
+                                </div>
+                            </div>
+                            <span
+                                class="text-xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">🌅</span>
+                        </label>
+
+                        <label
+                            class="flex items-center justify-between p-3 bg-white/60 hover:bg-white border border-transparent hover:border-teal-200 rounded-xl cursor-pointer transition-all shadow-sm group">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" name="DzikirList" value="Dzikir Petang"
+                                    class="peer w-5 h-5 rounded border-gray-300 text-teal-600 focus:ring-teal-500 cursor-pointer">
+
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-sm font-semibold text-slate-700 peer-checked:text-gray-400 peer-checked:line-through transition-colors">
+                                        Dzikir Petang
+                                    </span>
+                                    <span class="text-[10px] text-slate-400">Antara ashar hingga terbenam
+                                        matahari</span>
+                                </div>
+                            </div>
+                            <span
+                                class="text-xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">🌇</span>
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="bg-[#fff1e6] p-5 rounded-2xl border-2 border-[#eddcd2] relative">
+                    <div class="absolute top-0 left-8 w-4 h-full border-r-2 border-double border-red-200/50"></div>
+                    <h3 class="font-bold text-lg mb-2 pl-6 font-hand text-[#9d8189]">📝 Catatan Hari Ini</h3>
+                    <textarea name="Catatan" rows="4"
+                        class="w-full bg-transparent border-b border-gray-300 pl-6 focus:outline-none focus:border-[#9d8189] leading-loose font-hand text-lg"
+                        placeholder="Apa yang kamu syukuri hari ini? Ceritakan..."></textarea>
+                </div>
+            </fieldset>
+            <button type="submit" id="btnSubmit"
+                class="w-full bg-[#9d8189] hover:bg-[#806870] text-white font-bold py-4 rounded-xl shadow-lg transform transition active:scale-95 flex justify-center items-center gap-2">
+                <i class="fas fa-save"></i> Simpan Jurnal
+            </button>
+
+            <div id="statusMessage" class="hidden text-center p-3 rounded-lg text-sm font-bold"></div>
+
+        </form>
+    </div>
+
+    <button onclick="toggleSettings()"
+        class="fixed top-4 right-4 bg-white/80 p-3 rounded-full shadow-lg hover:bg-white transition z-50">
+        <i class="fas fa-cog text-gray-600 text-xl"></i>
+    </button>
+
+    <div id="settingsModal"
+        class="fixed inset-0 bg-black/60 hidden flex items-center justify-center z-50 backdrop-blur-sm p-4">
+        <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full mx-auto max-h-[90vh] overflow-y-auto">
+
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                    ⚙️ Setup Database
+                </h3>
+                <button onclick="toggleSettings()" class="text-gray-400 hover:text-gray-600">✕</button>
+            </div>
+
+            <p class="text-sm text-gray-600 mb-4">
+                Hubungkan aplikasi ini dengan Google Sheet pribadi Anda untuk menyimpan data.
+            </p>
+
+            <div class="mb-4">
+                <a href="https://docs.google.com/spreadsheets/d/1CVI120AJ97JjkqBcofrlgjFgrlNXiC5re1rnxf2Cc2c/copy"
+                    target="_blank"
+                    class="flex items-center justify-center gap-2 w-full border border-green-200 bg-green-50 text-green-700 hover:bg-green-100 font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
+                    📄 Salin Template Spreadsheet
+                </a>
+                <p class="text-[10px] text-gray-400 mt-1 text-center">Klik link di atas untuk menyalin template ke
+                    Google Drive Anda.</p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 mb-5 text-xs text-slate-600">
+                <strong class="block mb-2 text-slate-800">Cara mendapatkan URL App Script:</strong>
+                <ol class="list-decimal ml-4 space-y-1">
+                    <li>Buka Spreadsheet hasil salinan.</li>
+                    <li>Klik menu <b>Extensions</b> &rarr; <b>Apps Script</b>.</li>
+                    <li>Klik tombol biru <b>Deploy</b> &rarr; <b>New Deployment</b>.</li>
+                    <li>Klik ikon gear (⚙️) &rarr; pilih <b>Web App</b>.</li>
+                    <li>Isi Description (bebas).</li>
+                    <li><b>Who has access</b> ubah ke: <b>Anyone</b> (Wajib!).</li>
+                    <li>Klik <b>Deploy</b> &rarr; Salin <b>Web App URL</b>.</li>
+                </ol>
+            </div>
+
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Paste Web App URL Disini</label>
+            <input type="text" id="userScriptURL" placeholder="https://script.google.com/macros/s/..."
+                class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none mb-6 transition-all">
+
+            <div class="flex flex-col gap-2">
+                <button onclick="saveSettings()"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 active:scale-95 transition-all shadow-lg shadow-blue-200">
+                    Simpan & Hubungkan
+                </button>
+                <button onclick="toggleSettings()"
+                    class="w-full py-2 text-gray-500 hover:bg-gray-100 rounded-xl transition-colors text-sm">
+                    Batal
+                </button>
+            </div>
+
+            <p class="mt-4 text-[10px] text-center text-gray-400">
+                *URL disimpan aman di browser Anda (Local Storage).
+            </p>
+        </div>
+    </div>
+    <script>
+        // --- KONFIGURASI UTAMA ---
+        // Pastikan URL ini adalah URL Web App terbaru Anda
+        // --- KONFIGURASI DINAMIS ---
+        // 1. Coba ambil URL dari memori browser pengguna
+        let scriptURL = localStorage.getItem('myRamadhanScriptURL');
+
+        // 2. Jika belum ada URL (Pengguna Baru), paksa buka Settings
+        window.addEventListener('DOMContentLoaded', () => {
+            if (!scriptURL) {
+                // Tampilkan Modal Settings
+                document.getElementById('settingsModal').classList.remove('hidden');
+                // Matikan tombol submit agar tidak error
+                document.getElementById('btnSubmit').disabled = true;
+                document.getElementById('btnSubmit').innerHTML = '⚠️ Setup Database Dulu';
+            } else {
+                // Jika sudah ada URL, jalankan aplikasi normal
+                initApp();
+            }
+        });
+
+        // --- FUNGSI SETTINGS ---
+        function toggleSettings() {
+            const modal = document.getElementById('settingsModal');
+            const input = document.getElementById('userScriptURL');
+
+            // Tampilkan URL yang tersimpan saat ini (jika ada)
+            if (modal.classList.contains('hidden')) {
+                input.value = scriptURL || '';
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function saveSettings() {
+            const input = document.getElementById('userScriptURL').value.trim();
+
+            if (!input.startsWith('https://script.google.com/')) {
+                alert("URL tidak valid! Harus diawali https://script.google.com/...");
+                return;
+            }
+
+            // Simpan ke memori browser
+            localStorage.setItem('myRamadhanScriptURL', input);
+
+            // Reload halaman agar scriptURL baru terbaca
+            window.location.reload();
+        }
+
+        // --- FUNGSI INIT (Dulu kode ini ada di window onload biasa) ---
+        function initApp() {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            // ... (Kode setup tanggal & handleDateChange Anda yang lama pindah ke sini) ...
+            // Contoh:
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            datePicker.value = `${year}-${month}-${day}`;
+
+            handleDateChange(today);
+        }
+        const startDateRamadhan = new Date(2026, 1, 19); // Set Tanggal 1 Ramadhan disini
+
+        // DOM Elements
+        const form = document.getElementById('ramadhanForm');
+        const btn = document.getElementById('btnSubmit');
+        const msg = document.getElementById('statusMessage');
+        const datePicker = document.getElementById('datePicker');
+
+        // Hidden Inputs
+        const inputHariKe = document.getElementById('inputHariKe');
+        const inputTanggal = document.getElementById('inputTanggal');
+        const inputNamaHari = document.getElementById('inputNamaHari');
+
+        // --- 1. INISIALISASI (Jalan saat web dibuka) ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            datePicker.value = `${year}-${month}-${day}`;
+
+            // Jalankan logika
+            handleDateChange(today);
+        });
+
+        // --- 2. EVENT LISTENER: SAAT TANGGAL DIGANTI ---
+        datePicker.addEventListener('change', function () {
+            const selectedDate = new Date(this.value);
+            handleDateChange(selectedDate);
+        });
+
+        const formContent = document.getElementById('formContent'); // Ambil fieldset
+        const hariBadge = document.getElementById('displayHariKe');
+
+        // --- 3. LOGIKA UTAMA: GANTI TANGGAL & VALIDASI ---
+        function handleDateChange(dateObj) {
+            // A. Reset Form
+            form.reset();
+            msg.classList.add('hidden');
+            resetWaterVisual();
+
+            // B. Hitung Selisih Hari
+            const diffTime = dateObj - startDateRamadhan;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 supaya mulai dari 1
+            const dayName = dateObj.toLocaleDateString('id-ID', { weekday: 'long' });
+            const dateString = dateObj.toISOString().split('T')[0];
+
+            // C. Tentukan Status & Kunci Form
+            let statusText = "";
+            let isLocked = false;
+            let badgeColor = "";
+
+            if (diffDays < 1) {
+                // PRA RAMADHAN
+                statusText = "Pra-Ramadhan";
+                isLocked = true;
+                badgeColor = "bg-gray-200 text-gray-500 border-gray-300";
+            } else if (diffDays > 30) {
+                // PASCA RAMADHAN (Asumsi Ramadhan maks 30 hari)
+                statusText = "Pasca-Ramadhan";
+                isLocked = true;
+                badgeColor = "bg-gray-200 text-gray-500 border-gray-300";
+            } else {
+                // BULAN RAMADHAN (1-30)
+                statusText = `Hari ke-${diffDays}`;
+                isLocked = false;
+                badgeColor = "bg-soft-pink text-[#9d8189] border-red-200";
+            }
+
+            // D. Update UI
+            hariBadge.innerText = statusText;
+            hariBadge.className = `px-4 py-2 rounded-full border shadow-sm font-bold transition-colors ${badgeColor}`;
+
+            inputHariKe.value = diffDays;
+            inputTanggal.value = dateString;
+            inputNamaHari.value = dayName;
+
+            // E. Eksekusi Penguncian (Locking)
+            if (isLocked) {
+                // Matikan Form
+                formContent.disabled = true; // Fieldset disabled mematikan semua anak-anaknya
+                formContent.classList.add('opacity-50', 'grayscale'); // Efek visual redup
+
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-lock"></i> Jurnal Terkunci';
+                btn.classList.remove('bg-[#9d8189]', 'bg-blue-600');
+                btn.classList.add('bg-gray-400', 'cursor-not-allowed');
+
+                msg.innerText = `Jurnal hanya dapat diisi pada 1-30 Ramadhan. (${statusText})`;
+                msg.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+                msg.classList.add('bg-gray-200', 'text-gray-600');
+            } else {
+                // Hidupkan Form
+                formContent.disabled = false;
+                formContent.classList.remove('opacity-50', 'grayscale');
+
+                btn.disabled = false;
+                btn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                // Warna tombol akan diatur ulang oleh loadDataByDate nanti
+
+                // F. Cek Data (Hanya fetch jika TIDAK terkunci)
+                loadDataByDate(dateString);
+            }
+        }
+
+        // --- 4. UPDATE FUNGSI LOAD DATA ---
+        async function loadDataByDate(dateString) {
+            btn.innerHTML = '<i class="fas fa-sync fa-spin"></i> Cek Data...';
+            btn.disabled = true;
+
+            const formData = new FormData();
+            formData.append('action', 'read');
+            formData.append('searchDate', dateString);
+
+            try {
+                const response = await fetch(scriptURL, { method: 'POST', body: formData });
+                if (!response.ok) throw new Error("Server Error");
+
+                const result = await response.json();
+
+                if (result.status === 'found') {
+                    fillForm(result.data);
+
+                    msg.innerText = "Data tersimpan ditemukan. Mode Edit.";
+                    msg.classList.remove('hidden');
+                    msg.classList.add('bg-blue-100', 'text-blue-700');
+
+                    btn.innerHTML = '<i class="fas fa-edit"></i> Update Data';
+                    btn.classList.remove('bg-[#9d8189]');
+                    btn.classList.add('bg-blue-600');
+                } else {
+                    // Reset UI ke mode simpan baru
+                    btn.innerHTML = '<i class="fas fa-save"></i> Simpan Jurnal';
+                    btn.classList.remove('bg-blue-600');
+                    btn.classList.add('bg-[#9d8189]');
+                }
+            } catch (error) {
+                console.error("Gagal load:", error);
+                // Jangan tampilkan error ke user jika hanya gagal load data kosong
+                btn.innerHTML = '<i class="fas fa-save"></i> Simpan Jurnal';
+            } finally {
+                // Pastikan tombol aktif kembali HANYA JIKA form tidak disabled (Double check)
+                if (!formContent.disabled) {
+                    btn.disabled = false;
+                }
+            }
+        }
+
+        // --- 5. HELPER: MENGISI FORM (MAPPING DATA) ---
+        function fillForm(data) {
+            // Checkbox Sholat
+            if (data.Sholat) {
+                const arr = data.Sholat.toString().split(', ');
+                document.querySelectorAll('input[name="SholatList"]').forEach(el => {
+                    el.checked = arr.includes(el.value);
+                });
+            }
+            // Checkbox Dzikir
+            if (data.Dzikir) {
+                const arr = data.Dzikir.toString().split(', ');
+                document.querySelectorAll('input[name="DzikirList"]').forEach(el => {
+                    el.checked = arr.includes(el.value);
+                });
+            }
+            // Radio Mood
+            if (data.Mood) {
+                const rad = document.querySelector(`input[name="Mood"][value="${data.Mood}"]`);
+                if (rad) rad.checked = true;
+            }
+            // Dropdowns & Text
+            if (data.Puasa) document.querySelector('select[name="Puasa"]').value = data.Puasa;
+            if (data.Sedekah) document.querySelector('select[name="Sedekah"]').value = data.Sedekah;
+            if (data.Quran) document.querySelector('input[name="Quran"]').value = data.Quran;
+            if (data.AyatQuotes) document.querySelector('textarea[name="AyatQuotes"]').value = data.AyatQuotes;
+            if (data.Catatan) document.querySelector('textarea[name="Catatan"]').value = data.Catatan;
+
+            // Air Minum
+            if (data.AirMinum) setWater(parseInt(data.AirMinum));
+        }
+
+        // --- 6. LOGIKA AIR MINUM (VISUAL) ---
+        const waterContainer = document.getElementById('waterContainer');
+        const airInput = document.getElementById('airInput');
+
+        // Render Gelas (Sekali saja saat load)
+        if (waterContainer.children.length === 0) {
+            for (let i = 1; i <= 8; i++) {
+                let drop = document.createElement('div');
+                drop.innerHTML = '<i class="fas fa-tint text-2xl text-gray-300 cursor-pointer transition hover:scale-110"></i>';
+                drop.onclick = () => setWater(i);
+                drop.id = `drop-${i}`;
+                waterContainer.appendChild(drop);
+            }
+        }
+
+        function setWater(n) {
+            airInput.value = n;
+            for (let i = 1; i <= 8; i++) {
+                let drop = document.getElementById(`drop-${i}`);
+                let icon = drop.querySelector('i');
+                if (i <= n) {
+                    icon.classList.remove('text-gray-300');
+                    icon.classList.add('text-blue-500');
+                } else {
+                    icon.classList.remove('text-blue-500');
+                    icon.classList.add('text-gray-300');
+                }
+            }
+        }
+
+        function resetWaterVisual() {
+            setWater(0);
+        }
+
+        // --- 7. HANDLE SUBMIT (SIMPAN) ---
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+
+            const formData = new FormData(form);
+            formData.append('action', 'save'); // Mode simpan
+
+            // Manual Collect Checkboxes
+            const sholatChecked = [];
+            document.querySelectorAll('input[name="SholatList"]:checked').forEach(c => sholatChecked.push(c.value));
+            formData.append('Sholat', sholatChecked.join(', '));
+
+            const dzikirChecked = [];
+            document.querySelectorAll('input[name="DzikirList"]:checked').forEach(c => dzikirChecked.push(c.value));
+            formData.append('Dzikir', dzikirChecked.join(', '));
+
+            formData.append('UserAgent', navigator.userAgent);
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        btn.innerHTML = '<i class="fas fa-check"></i> Tersimpan!';
+                        msg.innerText = data.message;
+                        msg.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+                        msg.classList.add('bg-green-100', 'text-green-700');
+
+                        // Delay kembalikan tombol
+                        setTimeout(() => {
+                            btn.disabled = false;
+                            btn.innerHTML = '<i class="fas fa-edit"></i> Update Data';
+                        }, 2000);
+                    } else {
+                        throw new Error(data.message);
+                    }
+                })
+                .catch(error => {
+                    btn.disabled = false;
+                    btn.innerHTML = 'Gagal. Coba lagi';
+                    msg.innerText = "Error: " + error.message;
+                    msg.classList.remove('hidden');
+                    msg.classList.add('bg-red-100', 'text-red-700');
+                });
+        });
+
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker terdaftar:', reg.scope))
+                    .catch(err => console.error('Gagal daftar SW:', err));
+            });
+        }
+    </script>
+</body>
+
+</html>

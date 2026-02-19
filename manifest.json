@@ -1,0 +1,21 @@
+{
+  "name": "Jurnal Ramadhan Aesthetic",
+  "short_name": "Jurnal Ramadhan",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fdf6e3",
+  "theme_color": "#9d8189",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
