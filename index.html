@@ -429,7 +429,7 @@
             // A. Reset Form
             form.reset();
             msg.classList.add('hidden');
-            resetWaterVisual();
+            if (typeof setWater === 'function') setWater(0);
 
             // B. Hitung Selisih Hari
             const diffTime = dateObj - startDateRamadhan;
@@ -669,4 +669,5 @@
 
 
 </html>
+
 
