@@ -6,7 +6,7 @@ const ASSETS_TO_CACHE = [
   './icon-512.png',
   './manifest.json',
   // Cache CDN eksternal agar UI tidak hancur saat offline
-  'https://cdn.tailwindcss.com',
+  './style.css',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
   'https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@500;700&display=swap'
 ];
@@ -61,4 +61,5 @@ self.addEventListener('fetch', (event) => {
       });
     })
   );
+
 });
