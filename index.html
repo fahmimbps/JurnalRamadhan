@@ -402,20 +402,7 @@
         const inputTanggal = document.getElementById('inputTanggal');
         const inputNamaHari = document.getElementById('inputNamaHari');
 
-        // --- 1. INISIALISASI (Jalan saat web dibuka) ---
-        window.addEventListener('DOMContentLoaded', () => {
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            const year = today.getFullYear();
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const day = String(today.getDate()).padStart(2, '0');
-            datePicker.value = `${year}-${month}-${day}`;
-
-            // Jalankan logika
-            handleDateChange(today);
-        });
-
-        // --- 2. EVENT LISTENER: SAAT TANGGAL DIGANTI ---
+       // --- 2. EVENT LISTENER: SAAT TANGGAL DIGANTI ---
         datePicker.addEventListener('change', function () {
             const selectedDate = new Date(this.value);
             handleDateChange(selectedDate);
@@ -435,7 +422,12 @@
             const diffTime = dateObj - startDateRamadhan;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 supaya mulai dari 1
             const dayName = dateObj.toLocaleDateString('id-ID', { weekday: 'long' });
-            const dateString = dateObj.toISOString().split('T')[0];
+            
+            // KOREKSI: Gunakan waktu lokal agar tidak tergeser oleh UTC
+            const localYear = dateObj.getFullYear();
+            const localMonth = String(dateObj.getMonth() + 1).padStart(2, '0');
+            const localDay = String(dateObj.getDate()).padStart(2, '0');
+            const dateString = `${localYear}-${localMonth}-${localDay}`;
 
             // C. Tentukan Status & Kunci Form
             let statusText = "";
@@ -669,5 +661,6 @@
 
 
 </html>
+
 
 
