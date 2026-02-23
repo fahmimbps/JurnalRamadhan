@@ -404,7 +404,12 @@
 
        // --- 2. EVENT LISTENER: SAAT TANGGAL DIGANTI ---
         datePicker.addEventListener('change', function () {
-            const selectedDate = new Date(this.value);
+            // KOREKSI: Pecah string YYYY-MM-DD menjadi array angka lokal
+            const [y, m, d] = this.value.split('-');
+            // Ingat, bulan di JS dimulai dari 0 (m - 1)
+            const selectedDate = new Date(y, m - 1, d);
+            selectedDate.setHours(0, 0, 0, 0); // Kunci di jam 00:00 lokal
+            
             handleDateChange(selectedDate);
         });
 
@@ -420,7 +425,7 @@
 
             // B. Hitung Selisih Hari
             const diffTime = dateObj - startDateRamadhan;
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 supaya mulai dari 1
+            const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 supaya mulai dari 1
             const dayName = dateObj.toLocaleDateString('id-ID', { weekday: 'long' });
             
             // KOREKSI: Gunakan waktu lokal agar tidak tergeser oleh UTC
@@ -661,6 +666,7 @@
 
 
 </html>
+
 
 
 
